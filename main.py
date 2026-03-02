@@ -13,6 +13,8 @@ time.sleep(3)
 
 while True:
     response = Request.send()
-    print(f"Hola mundo from microPython: {response}")
+    response = response['main']['temp_max']
+    degrees = Request.to_celsius(float(response))
+    print(f"Response microPython: {degrees}")
     ledPin.toggle()
-    time.sleep(0.5)
+    time.sleep(3)
