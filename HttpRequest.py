@@ -1,16 +1,21 @@
-import urequests
 import requests
 import json
 
 class Request:
-    def __init__():
+    def __init__(self):
         self.baseUrl="https://mecanicarubio.com/api"
-    
-    def getDateTime():
-        url = f"{self.baseUrl}/sensors/time"
+        self.response = ""
+        
+    def getDateTime(self):
+        url=f"{self.baseUrl}/sensors/time"
         response = requests.get(url)
-        return json.loads(response.text)
-
-    def to_celsius(degrees):
-        data = float(degrees)
-        return (data - 32.0)/1.8
+        self.response = json.loads(response.text)
+        
+    def getTime(self):
+        self.getDateTime()
+        return self.response['time']
+        
+    def getDate(self):
+        self.getDateTime()
+        return self.response['date']
+        

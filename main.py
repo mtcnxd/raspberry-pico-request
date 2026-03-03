@@ -8,13 +8,15 @@ ledPin = Pin("LED", Pin.OUT)
 wifi = Wifi()
 address = wifi.getAddress()
 
+request = Request()
+
 print(f"Raspberry is already connected with address: {address}")
 time.sleep(3)
 
-while True:
-    response = Request.send()
-    response = response['main']['temp_max']
-    degrees = Request.to_celsius(float(response))
-    print(f"Response microPython: {degrees}")
+while True:    
+    current_time = request.getTime()
+    current_date = request.getDate()
+    
+    print(f"Current date: {current_date} current time: {current_time}")
     ledPin.toggle()
     time.sleep(3)
