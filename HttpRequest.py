@@ -4,18 +4,20 @@ import json
 class Request:
     def __init__(self):
         self.baseUrl="https://mecanicarubio.com/api"
-        self.response = ""
+        self.response = None
         
-    def getDateTime(self):
+    def refreshDateTime(self):
         url=f"{self.baseUrl}/sensors/time"
         response = requests.get(url)
         self.response = json.loads(response.text)
         
-    def getTime(self):
-        self.getDateTime()
+    def parseTime(self):
+        if self.response == None:
+        	self.refreshDateTime()        
         return self.response['time']
         
-    def getDate(self):
-        self.getDateTime()
+    def parseDate(self):
+        if self.response == None: 
+        	self.refreshDateTime()
         return self.response['date']
         
