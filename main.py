@@ -6,17 +6,17 @@ import time
 ledPin = Pin("LED", Pin.OUT)
 
 wifi = Wifi()
+request = Request()
 address = wifi.getAddress()
 
-request = Request()
-
 print(f"Raspberry is already connected with address: {address}")
-time.sleep(3)
+time.sleep(2)
 
-while True:    
-    current_time = request.getTime()
-    current_date = request.getDate()
+while True:
+    request.refreshDateTime()    
+    current_time = parse.getTime()
+    current_date = parse.getDate()
     
     print(f"Current date: {current_date} current time: {current_time}")
     ledPin.toggle()
-    time.sleep(3)
+    time.sleep(5)
