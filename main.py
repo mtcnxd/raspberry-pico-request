@@ -14,8 +14,8 @@ time.sleep(2)
 
 while True:
     request.refreshDateTime()    
-    current_time = parse.getTime()
-    current_date = parse.getDate()
+    current_date = request.parseDate()
+    current_time = request.parseTime()
     
     print(f"Current date: {current_date} current time: {current_time}")
     ledPin.toggle()
