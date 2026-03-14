@@ -7,6 +7,7 @@ class Wifi:
         self.sta_if.connect('SMARTHOME','100%smart')
 
         while (self.sta_if.isconnected == False):
+            print("Connecting to wlan")
             time.sleep(1)
     
     def getAddress(self):
