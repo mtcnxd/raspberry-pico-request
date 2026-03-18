@@ -1,6 +1,8 @@
 from Internet import Wifi
 from HttpRequest import Request
+from machine import UART
 import time
+import math
 
 adcPin = machine.ADC(26)
 
@@ -28,6 +30,10 @@ while True:
             request_time = request.time
             print(f"Current date: {current_date} current time: {current_time} request time: {request_time} ms")
             
-        except Exception as e:
-            print(f"An error ocurred: {e}")
+            current_trades = request.getActiveTrades()
+            current_total = round(current_trades['current_total'], 2)
+            print(f"Current total is: {current_total}")
+            
+        except Exception as err:
+            print(f"An error ocurred: {err}")
         

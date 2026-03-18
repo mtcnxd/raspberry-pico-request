@@ -36,5 +36,10 @@ class Request:
     def getDate(self):
         self.getDateTime()
         return self.response['date']
+    
+    def getActiveTrades(self):
+        url=f"{self.baseUrl}/sensors/trades"
+        response = requests.get(url)
+        return json.loads(response.text)
 
         

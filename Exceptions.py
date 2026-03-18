@@ -1,2 +1,3 @@
 class RuntimeExeption(Exception):
-    pass
+    def __init__(self, time):
+        self.time = time
